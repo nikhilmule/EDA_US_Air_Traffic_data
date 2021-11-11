@@ -28,3 +28,4 @@
     - For carrier group '1'. In year 2001 peak year
     - For carrier group '0'. In year 2013 is peak year
     - In year 2007 is airlines from MIA (MIA - Miami International Airport) travelled longer distances (based on the mean)
+Note: Please run the file to see visualiaztion output of 'pydeck' library
