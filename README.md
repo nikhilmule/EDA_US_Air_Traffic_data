@@ -3,7 +3,7 @@
 
 ## Objective
 
-- ### __The main objective of this analysis is to find the distance between two loactions (starting and ending)__
+- ### __The main objective of this analysis is to find the distance between two locations (starting and ending)__
 - ### __Find the max distance by carrier 0, carrier 1, maximum starting location__
 
 ## Explanation
@@ -12,20 +12,20 @@
 
 # __Conculsion__
 
-### Based on the descriptive analysis on the original dataset. It found that MIA - Miami International Airport is mostly used US Airport
+### Based on the descriptive analysis of the original dataset. It found that MIA - Miami International Airport is mostly used US Airport
 
-    - Intitally in this analysis. Carrier group 1 were analyzed first which are "US" domestic air carriers
+    - Initially in this analysis. Carrier group 1 were analyzed first which are "US" domestic air carriers
     - Next Carrier group 0 were analyzed first which are "foreign" domestic air carriers
 
 ### Random sample is taken from this dataset for carrier group "1" and "0" with size of 500 and size is considered based on the confidence interval, confidence level
 
 ### In this analysis distance between two locations is calcaulated by using geopy library
 
-### Intitally visulaization is done by using the "geopandas" but in order to make attractive visualiaztion "pydeck" library utilized.
+### Intitally visulaization is done by using the "geopandas" but in order to make it attractive visualiaztion "pydeck" library utilized.
 
 ### __Final__
 
     - For carrier group '1'. In year 2001 peak year
-    - For carrier group '0'. In year 2013 is peak year
+    - For carrier group '0'. In year 2013 is the peak year
     - In year 2007 is airlines from MIA (MIA - Miami International Airport) travelled longer distances (based on the mean)
-Note: Please run the file to see visualiaztion output of 'pydeck' library
+Note: Please run the file to see the visualization of "pydeck" library
