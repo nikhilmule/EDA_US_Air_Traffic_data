@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~8.5.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-map-container {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+#map {
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+#deckgl-overlay {
+  z-index: 2;
+  background: none;
+}
+
+#deck-map-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const jsonInput = {"initialViewState": {"bearing": 0, "latitude": 50, "longitude": -45, "pitch": 0, "zoom": 1}, "layers": [{"@@type": "GreatCircleLayer", "autoHighlight": true, "data": [{"Airport_Name": "Oita", "Country": "Japan", "End_Location": [36.5748441, 139.2394179], "Ending_Airport_Code": "OIT", "Start_Location": [42.3630236, -71.01340798670637], "Starting_Airport_code": "BOS", "Total_Distance_kilometers": 10741.034781465374, "Year": 2001, "elat": 36.5748441, "elat_long": [139.2394179, 36.5748441], "elong": 139.2394179, "geometry": {"coordinates": [139.2394179, 36.5748441], "type": "Point"}, "slat": 42.3630236, "slat_long": [-71.01340798670637, 42.3630236], "slong": -71.01340798670637, "start_coord": {"_Geom": 2714895403456, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "Manaus\u00a0- Eduardo Gomes International Airport", "Country": "Brazil", "End_Location": [-10.3333333, -53.2], "Ending_Airport_Code": "MAO", "Start_Location": [13.486490199999999, 144.80206025352555], "Starting_Airport_code": "GUM", "Total_Distance_kilometers": 18043.744927922136, "Year": 2001, "elat": -10.3333333, "elat_long": [-53.2, -10.3333333], "elong": -53.2, "geometry": {"coordinates": [-53.2, -10.3333333], "type": "Point"}, "slat": 13.486490199999999, "slat_long": [144.80206025352555, 13.486490199999999], "slong": 144.80206025352555, "start_coord": {"_Geom": 2714895399712, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "Hong Kong\u00a0- International Airport (HKIA)", "Country": "Hong Kong", "End_Location": [22.2793278, 114.1628131], "Ending_Airport_Code": "HKG", "Start_Location": [40.0580258, -84.2236524], "Starting_Airport_code": "MIA", "Total_Distance_kilometers": 12846.009578601992, "Year": 2001, "elat": 22.2793278, "elat_long": [114.1628131, 22.2793278], "elong": 114.1628131, "geometry": {"coordinates": [114.1628131, 22.2793278], "type": "Point"}, "slat": 40.0580258, "slat_long": [-84.2236524, 40.0580258], "slong": -84.2236524, "start_coord": {"_Geom": 2714895400768, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "Lima\u00a0- J Chavez International", "Country": "Peru", "End_Location": [-6.8699697, -75.0458515], "Ending_Airport_Code": "LIM", "Start_Location": [61.18103525, -149.99789189730433], "Starting_Airport_code": "ANC", "Total_Distance_kilometers": 9874.455558755148, "Year": 2001, "elat": -6.8699697, "elat_long": [-75.0458515, -6.8699697], "elong": -75.0458515, "geometry": {"coordinates": [-75.0458515, -6.8699697], "type": "Point"}, "slat": 61.18103525, "slat_long": [-149.99789189730433, 61.18103525], "slong": -149.99789189730433, "start_coord": {"_Geom": 2714895403648, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "Lisbon\u00a0- Lisboa", "Country": "Portugal", "End_Location": [40.0332629, -7.8896263], "Ending_Airport_Code": "LIS", "Start_Location": [40.0580258, -84.2236524], "Starting_Airport_code": "MIA", "Total_Distance_kilometers": 6294.507893518383, "Year": 2001, "elat": 40.0332629, "elat_long": [-7.8896263, 40.0332629], "elong": -7.8896263, "geometry": {"coordinates": [-7.8896263, 40.0332629], "type": "Point"}, "slat": 40.0580258, "slat_long": [-84.2236524, 40.0580258], "slong": -84.2236524, "start_coord": {"_Geom": 2714895403744, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": null, "Country": null, "End_Location": [34.220389, 70.3800314], "Ending_Airport_Code": "YHU", "Start_Location": [43.535796149999996, -84.08284956680652], "Starting_Airport_code": "MBS", "Total_Distance_kilometers": 11013.654725649483, "Year": 2001, "elat": 34.220389, "elat_long": [70.3800314, 34.220389], "elong": 70.3800314, "geometry": {"coordinates": [70.3800314, 34.220389], "type": "Point"}, "slat": 43.535796149999996, "slat_long": [-84.08284956680652, 43.535796149999996], "slong": -84.08284956680652, "start_coord": {"_Geom": 2714895403840, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "San Jose", "Country": "Costa Rica", "End_Location": [10.2735633, -84.0739102], "Ending_Airport_Code": "SJO", "Start_Location": [40.68906405, -74.17725485035348], "Starting_Airport_code": "EWR", "Total_Distance_kilometers": 3508.090289922258, "Year": 2001, "elat": 10.2735633, "elat_long": [-84.0739102, 10.2735633], "elong": -84.0739102, "geometry": {"coordinates": [-84.0739102, 10.2735633], "type": "Point"}, "slat": 40.68906405, "slat_long": [-74.17725485035348, 40.68906405], "slong": -74.17725485035348, "start_coord": {"_Geom": 2714895398464, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": null, "Country": null, "End_Location": [34.220389, 70.3800314], "Ending_Airport_Code": "PLS", "Start_Location": [40.7757145, -73.87336398511545], "Starting_Airport_code": "LGA", "Total_Distance_kilometers": 10931.934985016343, "Year": 2001, "elat": 34.220389, "elat_long": [70.3800314, 34.220389], "elong": 70.3800314, "geometry": {"coordinates": [70.3800314, 34.220389], "type": "Point"}, "slat": 40.7757145, "slat_long": [-73.87336398511545, 40.7757145], "slong": -73.87336398511545, "start_coord": {"_Geom": 2714895399808, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": null, "Country": null, "End_Location": [34.220389, 70.3800314], "Ending_Airport_Code": "SLW", "Start_Location": [40.0580258, -84.2236524], "Starting_Airport_code": "MIA", "Total_Distance_kilometers": 11378.100409622735, "Year": 2001, "elat": 34.220389, "elat_long": [70.3800314, 34.220389], "elong": 70.3800314, "geometry": {"coordinates": [70.3800314, 34.220389], "type": "Point"}, "slat": 40.0580258, "slat_long": [-84.2236524, 40.0580258], "slong": -84.2236524, "start_coord": {"_Geom": 2714895399904, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "Sao Paulo\u00a0- Guarulhos", "Country": "Brazil", "End_Location": [-10.3333333, -53.2], "Ending_Airport_Code": "GRU", "Start_Location": [28.412903550000003, -81.30944309752753], "Starting_Airport_code": "MCO", "Total_Distance_kilometers": 5246.799204535566, "Year": 2001, "elat": -10.3333333, "elat_long": [-53.2, -10.3333333], "elong": -53.2, "geometry": {"coordinates": [-53.2, -10.3333333], "type": "Point"}, "slat": 28.412903550000003, "slat_long": [-81.30944309752753, 28.412903550000003], "slong": -81.30944309752753, "start_coord": {"_Geom": 2714895398560, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "San Jose", "Country": "Costa Rica", "End_Location": [10.2735633, -84.0739102], "Ending_Airport_Code": "SJO", "Start_Location": [32.9699986, -96.83667739319338], "Starting_Airport_code": "ADS", "Total_Distance_kilometers": 2833.372906652692, "Year": 2001, "elat": 10.2735633, "elat_long": [-84.0739102, 10.2735633], "elong": -84.0739102, "geometry": {"coordinates": [-84.0739102, 10.2735633], "type": "Point"}, "slat": 32.9699986, "slat_long": [-96.83667739319338, 32.9699986], "slong": -96.83667739319338, "start_coord": {"_Geom": 2714895453280, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "Lima\u00a0- J Chavez International", "Country": "Peru", "End_Location": [-6.8699697, -75.0458515], "Ending_Airport_Code": "LIM", "Start_Location": [40.0580258, -84.2236524], "Starting_Airport_code": "MIA", "Total_Distance_kilometers": 5280.587811463007, "Year": 2001, "elat": -6.8699697, "elat_long": [-75.0458515, -6.8699697], "elong": -75.0458515, "geometry": {"coordinates": [-75.0458515, -6.8699697], "type": "Point"}, "slat": 40.0580258, "slat_long": [-84.2236524, 40.0580258], "slong": -84.2236524, "start_coord": {"_Geom": 2714802880064, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "Cancun", "Country": "Mexico", "End_Location": [22.5000485, -100.000037], "Ending_Airport_Code": "CUN", "Start_Location": [40.68906405, -74.17725485035348], "Starting_Airport_code": "EWR", "Total_Distance_kilometers": 3152.3117959250935, "Year": 2001, "elat": 22.5000485, "elat_long": [-100.000037, 22.5000485], "elong": -100.000037, "geometry": {"coordinates": [-100.000037, 22.5000485], "type": "Point"}, "slat": 40.68906405, "slat_long": [-74.17725485035348, 40.68906405], "slong": -74.17725485035348, "start_coord": {"_Geom": 2714802881024, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "Bahamas\u00a0- Lynden Pindling International Airport", "Country": "The Bahamas", "End_Location": [24.7736546, -78.0000547], "Ending_Airport_Code": "NAS", "Start_Location": [40.0580258, -84.2236524], "Starting_Airport_code": "MIA", "Total_Distance_kilometers": 1791.9537805002149, "Year": 2001, "elat": 24.7736546, "elat_long": [-78.0000547, 24.7736546], "elong": -78.0000547, "geometry": {"coordinates": [-78.0000547, 24.7736546], "type": "Point"}, "slat": 40.0580258, "slat_long": [-84.2236524, 40.0580258], "slong": -84.2236524, "start_coord": {"_Geom": 2714802878240, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "Nassau", "Country": "Bahamas", "End_Location": [24.7736546, -78.0000547], "Ending_Airport_Code": "NAS", "Start_Location": [38.9092542, -83.8836555], "Starting_Airport_code": "BRO", "Total_Distance_kilometers": 1662.3976368874225, "Year": 2001, "elat": 24.7736546, "elat_long": [-78.0000547, 24.7736546], "elong": -78.0000547, "geometry": {"coordinates": [-78.0000547, 24.7736546], "type": "Point"}, "slat": 38.9092542, "slat_long": [-83.8836555, 38.9092542], "slong": -83.8836555, "start_coord": {"_Geom": 2714802875264, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "Hong Kong\u00a0- International Airport (HKIA)", "Country": "Hong Kong", "End_Location": [22.2793278, 114.1628131], "Ending_Airport_Code": "HKG", "Start_Location": [40.0580258, -84.2236524], "Starting_Airport_code": "MIA", "Total_Distance_kilometers": 12846.009578601992, "Year": 2001, "elat": 22.2793278, "elat_long": [114.1628131, 22.2793278], "elong": 114.1628131, "geometry": {"coordinates": [114.1628131, 22.2793278], "type": "Point"}, "slat": 40.0580258, "slat_long": [-84.2236524, 40.0580258], "slong": -84.2236524, "start_coord": {"_Geom": 2714802876608, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}, {"Airport_Name": "Glasgow, Prestwick", "Country": "United Kingdom", "End_Location": [54.7023545, -3.2765753], "Ending_Airport_Code": "PIK", "Start_Location": [44.878019050000006, -93.2209280537696], "Starting_Airport_code": "MSP", "Total_Distance_kilometers": 6112.720102798028, "Year": 2001, "elat": 54.7023545, "elat_long": [-3.2765753, 54.7023545], "elong": -3.2765753, "geometry": {"coordinates": [-3.2765753, 54.7023545], "type": "Point"}, "slat": 44.878019050000006, "slat_long": [-93.2209280537696, 44.878019050000006], "slong": -93.2209280537696, "start_coord": {"_Geom": 2714802876032, "_ctypesData": {}, "_isEmpty": false, "_ndim": 2}}], "getSourceColor": [64, 255, 0], "getSourcePosition": "@@=slat_long", "getStrokeWidth": 12, "getTargetColor": [0, 128, 200], "getTargetPosition": "@@=elat_long", "id": "4627ab25-340a-4ef2-8e5b-ffdbc27949d8", "pickable": true}], "mapProvider": "carto", "mapStyle": "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json", "pickingRadius": 10, "views": [{"@@type": "MapView", "controller": true}]};
+    const tooltip = {'text': '{Starting_Airport_code} to {Airport_Name} and distance is {Total_Distance_kilometers}'};
+    const customLibraries = null;
+
+    const deckInstance = createDeck({
+                  container: document.getElementById('deck-container'),
+      jsonInput,
+      tooltip,
+      customLibraries
+    });
+
+  </script>
+</html>
